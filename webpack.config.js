@@ -23,7 +23,7 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                sourMap: true
+                sourceMap: true
               }
             },
             {
