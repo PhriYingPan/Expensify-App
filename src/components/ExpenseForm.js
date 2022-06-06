@@ -52,7 +52,7 @@ export default class ExpenseForm extends React.Component {
 
         if (!this.state.description || !this.state.amount) {
             this.setState(() => ({error: 'Please provide description and amount'}));
-        } else {
+        } else { 
             this.setState(() => ({error: ''}));
             this.props.onSubmit({
                 description: this.state.description,
@@ -64,13 +64,15 @@ export default class ExpenseForm extends React.Component {
     };
     render() {
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
+            
+                
+                <form className="form" onSubmit={this.onSubmit}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
                     <input
                         type="text"
                         placeholder="Description"
                         autoFocus
+                        className="text-input"
                         value={this.state.description}
                         onChange={this.onDescriptionChange}
                     />
@@ -79,6 +81,7 @@ export default class ExpenseForm extends React.Component {
                         type="text"
                         placeholder="Amount"
                         value={this.state.amount}
+                        className="text-input"
                         onChange={this.onAmountChange}
                     />
                     <SingleDatePicker
@@ -91,14 +94,18 @@ export default class ExpenseForm extends React.Component {
                     />
                     <textarea
                         placeholder="Add a note for your expense (optional)"
+                        className="textarea"
                         value={this.state.note}
                         onChange={this.onNoteChange}
                     >
                         
                     </textarea>
-                    <button>Add Expense</button>
+                    <div>  
+                        <button className="button">Save Expense</button>
+                    </div>
+                    
                 </form>
-            </div>
+            
         )
     }
 }
